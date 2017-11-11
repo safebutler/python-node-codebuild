@@ -47,7 +47,7 @@ RUN set -x \
 #  Customize the build environment for our own stack
 ##########################################################################
 
-RUN apt-get install --yes jq
+RUN apt-get update && apt-get install --yes jq
 # upgrade jq to 1.5. http://stackoverflow.com/questions/36462955/upgrading-jq-to-1-5-on-ubuntu
 RUN wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 \
      && chmod +x jq-linux64 \
