@@ -43,8 +43,6 @@ RUN set -x \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean
 
-VOLUME /var/lib/docker
-
 ##########################################################################
 #  Customize the build environment for our own stack
 ##########################################################################
@@ -60,5 +58,8 @@ RUN apt-get install --yes jq
 RUN wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 \
      && chmod +x jq-linux64 \
      && mv jq-linux64 $(which jq)
+
+
+VOLUME /var/lib/docker
 
 ENTRYPOINT ["dockerd-entrypoint.sh"]
