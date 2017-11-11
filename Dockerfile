@@ -44,6 +44,14 @@ RUN wget "https://bootstrap.pypa.io/get-pip.py" -O /tmp/get-pip.py \
     && pip install awscli==1.11.25 \
     && rm -fr /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+ENV DOCKER_BUCKET="get.docker.com" \
+    DOCKER_VERSION="1.12.1" \
+    DOCKER_SHA256="05ceec7fd937e1416e5dce12b0b6e1c655907d349d52574319a1e875077ccb79" \
+    DIND_COMMIT="3b5fac462d21ca164b3778647420016315289034"
+
+COPY dockerd-entrypoint.sh /usr/local/bin/
+
+# install python
 ENV PATH="/usr/local/bin:$PATH" \
     GPG_KEY="97FC712E4C024BBEA48A61ED3A5CA953F73C700D" \
     PYTHON_VERSION="3.5.2" \
@@ -105,14 +113,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         && rm -fr /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 CMD ["python3"]
-
-
-ENV DOCKER_BUCKET="get.docker.com" \
-    DOCKER_VERSION="1.12.1" \
-    DOCKER_SHA256="05ceec7fd937e1416e5dce12b0b6e1c655907d349d52574319a1e875077ccb79" \
-    DIND_COMMIT="3b5fac462d21ca164b3778647420016315289034"
-
-COPY dockerd-entrypoint.sh /usr/local/bin/
 
 # From the docker:1.11
 RUN set -x \
