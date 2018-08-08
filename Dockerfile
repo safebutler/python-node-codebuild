@@ -77,8 +77,6 @@ RUN set -ex \
 
 VOLUME /var/lib/docker
 
-COPY dockerd-entrypoint.sh /usr/local/bin/
-
 ENV PATH="/usr/local/bin:$PATH" \
     GPG_KEY="0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D" \
     PYTHON_VERSION="3.6.5" \
@@ -148,3 +146,6 @@ RUN apt-get update && apt-get install --yes jq
 RUN wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 \
      && chmod +x jq-linux64 \
      && mv jq-linux64 $(which jq)
+
+COPY dockerd-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/dockerd-entrypoint.sh  # https://github.com/moby/moby/issues/27182
