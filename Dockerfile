@@ -1,7 +1,5 @@
 FROM ubuntu:14.04.5
 
-ENV LANG="C.UTF-8"
-
 ENV DOCKER_BUCKET="download.docker.com" \
     DOCKER_VERSION="18.09.0" \
     DOCKER_CHANNEL="stable" \
@@ -32,7 +30,7 @@ RUN set -ex \
     && apt-get install -y --no-install-recommends \
        wget=1.15-* python3=3.4.* python3.4-dev=3.4.* fakeroot=1.20-* ca-certificates jq \
        tar=1.27.* gzip=1.6-* zip=3.0-* autoconf=2.69-* automake=1:1.14.* \
-       zip2=1.0.* file=1:5.14-* g++=4:4.8.* gcc=4:4.8.* imagemagick=8:6.7.* \
+       bzip2=1.0.* file=1:5.14-* g++=4:4.8.* gcc=4:4.8.* imagemagick=8:6.7.* \
        libbz2-dev=1.0.* libc6-dev=2.19-* libcurl4-openssl-dev=7.35.* libdb-dev=1:5.3.* \
        libevent-dev=2.0.* libffi-dev=3.1~* libgeoip-dev=1.6.* libglib2.0-dev=2.40.* \
        libjpeg-dev=8c-* libkrb5-dev=1.12+* liblzma-dev=5.1.* \
