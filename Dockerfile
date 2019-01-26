@@ -77,6 +77,12 @@ RUN set -ex \
 # Ensure docker-compose works
     && docker-compose version
 
+# Install dependencies by all python images equivalent to buildpack-deps:jessie
+# on the public repos.
+
+RUN set -ex \
+    && pip3 install awscli boto3
+
 VOLUME /var/lib/docker
 
 ENV PATH="/usr/local/bin:$PATH" \
@@ -148,6 +154,9 @@ RUN apt-get update && apt-get install --yes jq
 RUN wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 \
      && chmod +x jq-linux64 \
      && mv jq-linux64 $(which jq)
+
+# Configure SSH
+COPY ssh_config /root/.ssh/config
 
 COPY dockerd-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/dockerd-entrypoint.sh  # https://github.com/moby/moby/issues/27182
