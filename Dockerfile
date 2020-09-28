@@ -80,9 +80,6 @@ RUN set -ex \
 # Install dependencies by all python images equivalent to buildpack-deps:jessie
 # on the public repos.
 
-RUN set -ex \
-    && pip3 install awscli boto3
-
 VOLUME /var/lib/docker
 
 ENV PATH="/usr/local/bin:$PATH" \
