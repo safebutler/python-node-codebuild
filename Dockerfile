@@ -28,7 +28,7 @@ RUN set -ex \
     && ssh-keyscan -t rsa,dsa -H bitbucket.org >> ~/.ssh/known_hosts \
     && chmod 600 ~/.ssh/known_hosts \
     && apt-get install -y --no-install-recommends \
-       wget=1.15-* python3=3.7.* python3.7-dev=3.7.* fakeroot=1.20-* ca-certificates jq \
+       wget=1.15-* fakeroot=1.20-* ca-certificates jq \
        tar=1.27.* gzip=1.6-* zip=3.0-* autoconf=2.69-* automake=1:1.14.* \
        bzip2=1.0.* file=1:5.14-* g++=4:4.8.* gcc=4:4.8.* imagemagick=8:6.7.* \
        libbz2-dev=1.0.* libc6-dev=2.19-* libcurl4-openssl-dev=7.35.* libdb-dev=1:5.3.* \
