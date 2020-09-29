@@ -127,13 +127,15 @@ RUN set -ex \
 
 #=======================End of layer: runtimes  =================
 
-
-# install aws
-RUN set -ex \
-    && pip3 install awscli boto3
-
 #Prune nonactive runtimes.
 RUN n rm $NODE_12_VERSION
+
+# Setup AWS Tools
+# install awscli
+RUN set -ex \
+    && curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip" \
+    && unzip awscli-bundle.zip \
+    && ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
 
 # Docker 18
 ENV DOCKER_BUCKET="download.docker.com" \
