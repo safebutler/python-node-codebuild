@@ -194,3 +194,5 @@ COPY ssh_config /root/.ssh/config
 COPY dockerd-entrypoint.sh /usr/local/bin/
 
 ENTRYPOINT ["dockerd-entrypoint.sh"]
+
+RUN chmod +x /usr/local/bin/dockerd-entrypoint.sh  # https://github.com/moby/moby/issues/27182
